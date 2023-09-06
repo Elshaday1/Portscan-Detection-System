@@ -9,6 +9,36 @@ elif interface_type == "Wifi":
 else:
     print("Not connected to a valid interface")
 
+
+
+def calculate_mean_packet_length(interval):
+    packet_count = 0
+    total_length = 0
+    mean_length = 0
+
+    for packet in capture:
+        packet_count += 1
+        total_length += int(packet.length)
+
+        if packet_count % interval == 0:
+            mean_length = total_length / interval
+            total_length = 0
+            return mean_length
+
+    return mean_length
+
+# Assume you already have the live capture object 'capture'
+
+# Call the function to calculate the mean packet length every 20 packets
+mean_length = calculate_mean_packet_length(20)
+
+print("Mean Packet Length:", mean_length)
+
+
+
+
+
+
 capture.sniff_continuously()
 
 # def calculate_time_features():
@@ -58,6 +88,7 @@ features = {}
 # flow_iat_mean = IAT_Values['Flow IAT Mean']
 # fwd_iat_mean = IAT_Values['Fwd IAT Mean']
 # Iterate over the captured packets
+
 for packet in capture:
     # Extract the desired features from the packet
     if 'tcp' in packet:
