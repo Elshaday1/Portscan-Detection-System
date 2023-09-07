@@ -53,13 +53,33 @@ def calculate_min_packet_length(interval):
 
     return min_length
 
+# def calculate_backward_packet_length_mean(interval):
+#     backward_packet_lengths = []
 
+#     for packet in capture:
+#         if 'ack' in packet:
+#             backward_packet_lengths.append(int(packet.length))
 
+#         if len(backward_packet_lengths) == interval:
+#             mean_length = statistics.mean(backward_packet_lengths)
+#             backward_packet_lengths = []
+#             return mean_length
 
+#     return statistics.mean(backward_packet_lengths)
 
+# def calculate_backward_packet_length_std_dev(interval):
+#     backward_packet_lengths = []
 
+#     for packet in capture:
+#         if 'ack' in packet:
+#             backward_packet_lengths.append(int(packet.length))
 
+#         if len(backward_packet_lengths) == interval:
+#             std_dev = statistics.stdev(backward_packet_lengths)
+#             backward_packet_lengths = []
+#             return std_dev
 
+#     return statistics.stdev(backward_packet_lengths)
 
 capture.sniff_continuously()
 
