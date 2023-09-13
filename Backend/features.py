@@ -96,23 +96,6 @@ def calculate_max_min_length(packets):
             min_length = length
     return max_length, min_length
 
-# Calculate the mean length of packets
-def calculate_mean_length(packets):
-    total_length = calculate_total_length(packets)
-    total_packets = calculate_total_packets(packets)
-    mean_length = total_length / total_packets
-    return mean_length
-
-# Calculate the standard deviation of packet lengths
-def calculate_std_deviation(packets):
-    mean_length = calculate_mean_length(packets)
-    squared_diff_sum = 0
-    for packet in packets:
-        length = int(packet.length)
-        squared_diff_sum += (length - mean_length) ** 2
-    variance = squared_diff_sum / calculate_total_packets(packets)
-    std_deviation = math.sqrt(variance)
-    return std_deviation
 
 # Extract packet length from a packet
 packet_lengths = []
@@ -142,8 +125,8 @@ def calculate_variance_length():
     return statistics.variance(packet_lengths)
 
 # Example usage
-# cap = pyshark.FileCapture('your_packet_file.pcap')
-# packets = list(cap)
+cap = pyshark.FileCapture('your_packet_file.pcap')
+packets = list(cap)
 
 forward_packets = extract_forward_packets(packets)
 backward_packets = extract_backward_packets(packets)
