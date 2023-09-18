@@ -1,6 +1,7 @@
 from scapy.all import *
 from scapy.layers.inet import IP,TCP
 from cicflowmeter import *
+from cicflowmeter import Flow,FlowAnalysis
 
 def process_packet(packet):
     # Extract relevant information from the packet
