@@ -1,6 +1,7 @@
 import pandas as pd
 import joblib
 import os
+import shutil
 import glob
 
 loaded_model = joblib.load('C:/Users/Hp/Portscan-Detection-System/model.pkl')
@@ -14,6 +15,13 @@ loaded_model = joblib.load('C:/Users/Hp/Portscan-Detection-System/model.pkl')
 
 
 data = pd.read_csv('C:/Users/Hp/Desktop/CIC/packet.csv')
+
+#copying packet to backup
+shutil.copyfile('C:/Users/Hp/Desktop/CIC/packet.csv', 'C:/Users/Hp/Desktop/CIC/backup.csv')
+
+os.remove('C:/Users/Hp/Desktop/CIC/packet.csv')
+#opens a new file
+open('C:/Users/Hp/Desktop/CIC/packet.csv', 'w').close()
 
 
 X = data[['totlen_fwd_pkts','pkt_len_mean', 'flow_byts_s', 'ack_flag_cnt', 'pkt_len_min', 'dst_port', 'fwd_iat_min', 'bwd_pkts_s', 'bwd_pkt_len_std',
