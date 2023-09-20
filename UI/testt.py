@@ -47,3 +47,4 @@ content_label.pack()
 
 # Start the main loop
 window.mainloop()
+
