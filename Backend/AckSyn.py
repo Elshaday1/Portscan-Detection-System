@@ -1,25 +1,46 @@
-from scapy.all import *
-from scapy.layers.inet import IP, TCP
+import pyshark
+from queue import Queue
 
-total_connections = 0
-flagged_connections = 0
+# Packet buffer
+packet_buffer = Queue()
 
-def packet_handler(packet):
-    global total_connections, flagged_connections
+# Flag to control packet passing/blocking
+block_packets = True
 
-    # Extract relevant fields from the packet
-    if IP in packet and TCP in packet:
-        dst_host_count = packet[IP].dst
-        flag = packet[TCP].flags
+# Packet processing function
+def process_packet(packet):
+    global packet_buffer
+    global block_packets
 
-        # Check the desired criteria for flagged connections
-        if dst_host_count == 32 and flag in ['S0', 'S1', 'S2', 'S3']:
-            flagged_connections += 1
+    if block_packets:
+        packet_buffer.put(packet)
+    else:
+        # Perform feature extraction and prediction on the packet
+        # Your code for feature extraction and prediction goes here
+        # If positive prediction, block or discard packet; if negative, release packet
+        pass
 
-    total_connections += 1
+# Capture and buffer packets in real-time
+def capture_and_buffer_packets(interface):
+    capture = pyshark.LiveCapture(interface=interface)
+    for packet in capture.sniff_continuously(packet_count=0):
+        process_packet(packet)
 
-# Start capturing packets on your local network
-sniff(filter="tcp", prn=packet_handler)
+# Display the buffer
+def display_buffer():
+    while not packet_buffer.empty():
+        packet = packet_buffer.get()
+        print("Packet in buffer:", packet)
 
-percentage = (flagged_connections / total_connections) * 100
-print(f"The percentage of connections with activated flag among dst_host_count is: {percentage}%")
+# Example usage:
+# Specify the network interface to capture packets from
+network_interface = "eth0"
+
+# Start capturing and buffering packets in real-time
+capture_and_buffer_packets(network_interface)
+
+# Set the flag to allow packets to pass
+block_packets = False
+
+# Display the buffer
+display_buffer()
