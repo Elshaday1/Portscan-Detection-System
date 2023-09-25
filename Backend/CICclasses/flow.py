@@ -2,7 +2,7 @@ from enum import Enum
 from typing import Any
 # from decimal import Decimal
 
-from .import constants
+import constants
 import packet_flow_key
 from packet_direction import PacketDirection
 from flag_count import FlagCount
@@ -64,23 +64,23 @@ class Flow:
 
 
 
-def get_data(self) -> dict:
-    flow_bytes = FlowBytes(self)
-    flag_count = FlagCount(self)
-    packet_count = PacketCount(self)
-    packet_length = PacketLength(self)
-    packet_time = PacketTime(self)
-    flow_iat = get_statistics(self.flow_interarrival_time)
-    forward_iat = get_statistics(
-    packet_time.get_packet_iat(PacketDirection.FORWARD)
-        )
-    backward_iat = get_statistics(
-            packet_time.get_packet_iat(PacketDirection.REVERSE)
-        )
-    active_stat = get_statistics(self.active)
-    idle_stat = get_statistics(self.idle)
+    def get_data(self) -> dict:
+        flow_bytes = FlowBytes(self)
+        flag_count = FlagCount(self)
+        packet_count = PacketCount(self)
+        packet_length = PacketLength(self)
+        packet_time = PacketTime(self)
+        flow_iat = get_statistics(self.flow_interarrival_time)
+        forward_iat = get_statistics(
+        packet_time.get_packet_iat(PacketDirection.FORWARD)
+            )
+        backward_iat = get_statistics(
+                packet_time.get_packet_iat(PacketDirection.REVERSE)
+            )
+        active_stat = get_statistics(self.active)
+        idle_stat = get_statistics(self.idle)
 
-    data = {
+        data = {
         "Total Length of Fwd Packets" :  packet_length.get_total(PacketDirection.FORWARD),
         "Packet Length Mean" : float(packet_length.get_mean()),
         "Flow Bytes/s" : flow_bytes.get_rate(),
@@ -108,7 +108,7 @@ def get_data(self) -> dict:
         "Flow Packets/s" :  packet_count.get_rate(),
         "Fwd Header Length" : flow_bytes.get_forward_header_bytes()
 
-    }
+        }
 
     def add_packet(self, packet: Any, direction: Enum) -> None:
         """Adds a packet to the current list of packets.
