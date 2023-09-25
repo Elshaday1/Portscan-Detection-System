@@ -80,35 +80,32 @@ def get_data(self) -> dict:
     active_stat = get_statistics(self.active)
     idle_stat = get_statistics(self.idle)
 
-    totalLength =  packet_length.get_total(PacketDirection.FORWARD)
-    print(totalLength)
+    "Total Length of Fwd Packets" :  packet_length.get_total(PacketDirection.FORWARD),
+    "Packet Length Mean" : float(packet_length.get_mean()),
+    "Flow Bytes/s" : flow_bytes.get_rate(),
+    "ACK Flag Count"  : flag_count.has_flag("ACK"),
+    "Min Packet Length" : packet_length.get_min(),
+    "Destination Port" : self.dest_port,
+    "Fwd IAT Min" :  float(flow_iat["min"]),
+    "Bwd Packets/s" :  packet_count.get_rate(PacketDirection.REVERSE),
+    "Bwd Packet Length Std" : float(packet_length.get_std(PacketDirection.REVERSE)),
+    "Init_Win_bytes_forward" :  self.init_window_size[PacketDirection.FORWARD],
+    "Bwd IAT Min" : float(backward_iat["min"]),
+    "Init_Win_bytes_backward" :  self.init_window_size[PacketDirection.REVERSE],
+    "Idle Min" :  float(idle_stat["min"]),
+    "Total Length of Bwd Packets" : packet_length.get_total(PacketDirection.REVERSE),
+    "Flow Duration" :  1e6 * packet_time.get_duration(),
+    "Flow IAT Min" :  float(flow_iat["min"]),
+    "Bwd Packet Length Mean" : float(packet_length.get_mean(PacketDirection.REVERSE)),
+    "Packet Length Std" :  float(packet_length.get_std()),
+    "Bwd Header Length" :  flow_bytes.get_reverse_header_bytes(),
+    "Flow IAT Max" : float(flow_iat["max"]),
+    "min_seg_size_forward" :  flow_bytes.get_min_forward_header_bytes(),
+    "Flow IAT Mean" :  float(flow_iat["mean"]),
+    "Fwd Packet Length Max" :  float(packet_length.get_max(PacketDirection.FORWARD)),
+    "Fwd IAT Mean" :  float(flow_iat["mean"]),
+    "Flow Packets/s" :  packet_count.get_rate(),
+    "Fwd Header Length" : flow_bytes.get_forward_header_bytes()
 
-    
-
-# "Packet Length Mean" : "pkt_len_mean": float(packet_length.get_mean()),
-# "Flow Bytes/s" : "flow_byts_s": flow_bytes.get_rate(),
-# "ACK Flag Count" : "ack_flag_cnt": flag_count.has_flag("ACK"),
-# "Min Packet Length" : "pkt_len_min": packet_length.get_min(),
-# "Destination Port" : "dst_port": self.dest_port,
-# "Fwd IAT Min" : "flow_iat_min": float(flow_iat["min"]),
-# "Bwd Packets/s" : "bwd_pkts_s": packet_count.get_rate(PacketDirection.REVERSE),
-# "Bwd Packet Length Std" : "bwd_pkt_len_std": float(packet_length.get_std(PacketDirection.REVERSE)),
-# "Init_Win_bytes_forward" : "init_fwd_win_byts": self.init_window_size[PacketDirection.FORWARD],
-# "Bwd IAT Min" : "bwd_iat_min": float(backward_iat["min"]),
-# "Init_Win_bytes_backward" : "init_bwd_win_byts": self.init_window_size[PacketDirection.REVERSE],
-# "Idle Min" : "idle_min": float(idle_stat["min"]),
-# "Total Length of Bwd Packets" : "totlen_bwd_pkts": packet_length.get_total(PacketDirection.REVERSE),
-# "Flow Duration" : "flow_duration": 1e6 * packet_time.get_duration(),
-# "Flow IAT Min" : "flow_iat_min": float(flow_iat["min"]),
-# "Bwd Packet Length Mean" : "bwd_pkt_len_mean": float(packet_length.get_mean(PacketDirection.REVERSE)),
-# "Packet Length Std" : "pkt_len_std": float(packet_length.get_std()),
-# "Bwd Header Length" : "bwd_header_len": flow_bytes.get_reverse_header_bytes(),
-# "Flow IAT Max" : "flow_iat_max": float(flow_iat["max"]),
-# "min_seg_size_forward" : "fwd_seg_size_min": flow_bytes.get_min_forward_header_bytes(),
-# "Flow IAT Mean" : "flow_iat_mean": float(flow_iat["mean"]),
-# "Fwd Packet Length Max" : "fwd_pkt_len_max": float(packet_length.get_max(PacketDirection.FORWARD)),
-# "Fwd IAT Mean" : "flow_iat_mean": float(flow_iat["mean"]),
-# "Flow Packets/s" : "flow_pkts_s": packet_count.get_rate(),
-# "Fwd Header Length" : "fwd_header_len": flow_bytes.get_forward_header_bytes()
 
 
