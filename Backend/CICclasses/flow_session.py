@@ -140,7 +140,7 @@ class FlowSession(DefaultSession):
                     resp = post.json()
                     result = resp["result"].pop()
                     if result == 0:
-                        result_print = "Benign" 
+                        result_print = "Benign"
                     else:
                         result_print = "Malicious"
 
