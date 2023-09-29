@@ -143,28 +143,26 @@ max_backward_length, min_backward_length = calculate_max_min_length(backward_pac
 mean_forward_length = calculate_mean_length(forward_packets)
 mean_backward_length = calculate_mean_length(backward_packets)
 
-std_deviation_forward = calculate_std_deviation(forward_packets)
-std_deviation_backward = calculate_std_deviation(backward_packets)
 
 # Example usage
 previous_timestamp = None
 response_timestamp = None
 
-for packet in capture:
-    current_timestamp = datetime.fromisoformat(packet.frame_info.time.replace('Z', '+00:00'))
+# for packet in capture:
+#     current_timestamp = datetime.fromisoformat(packet.frame_info.time.replace('Z', '+00:00'))
 
-    if previous_timestamp:
-        forward_iat, previous_timestamp = calculate_forward_iat(packet, previous_timestamp)
-        print(f"Forward IAT: {forward_iat}")
-    else:
-        previous_timestamp = current_timestamp
+#     if previous_timestamp:
+#         forward_iat, previous_timestamp = calculate_forward_iat(packet, previous_timestamp)
+#         print(f"Forward IAT: {forward_iat}")
+#     else:
+#         previous_timestamp = current_timestamp
 
-    if hasattr(packet, 'response_to'):
-        if response_timestamp:
-            backward_iat = calculate_backward_iat(packet, response_timestamp)
-            print(f"Backward IAT: {backward_iat}")
-        else:
-            response_timestamp = current_timestamp
+#     if hasattr(packet, 'response_to'):
+#         if response_timestamp:
+#             backward_iat = calculate_backward_iat(packet, response_timestamp)
+#             print(f"Backward IAT: {backward_iat}")
+#         else:
+#             response_timestamp = current_timestamp
 
 # Usage example
 capture = start_live_capture()
