@@ -29,34 +29,7 @@ X = data[['totlen_fwd_pkts','pkt_len_mean', 'flow_byts_s', 'ack_flag_cnt', 'pkt_
              'bwd_pkt_len_mean', 'pkt_len_std', 'bwd_header_len', 'flow_iat_max', 'fwd_seg_size_min', 'flow_iat_mean', 'fwd_pkt_len_max',
                'fwd_iat_mean', 'flow_pkts_s', 'fwd_header_len']]
 #data_extracted = data[['a', 'b', 'c']].rename(columns={'a': 'e', 'b': 'f', 'c': 'g'})
-# X = X.rename(columns={
-#     'TotLen Fwd Pkts': 'Total Length of Fwd Packets',
-#     'Pkt Len Mean': 'Packet Length Mean',
-#     'Flow Byts/s': 'Flow Bytes/s',
-#     'ACK Flag Cnt': 'ACK Flag Count',
-#     'Pkt Len Min': 'Min Packet Length',
-#     'Dst Port': 'Destination Port',
-#     'Fwd IAT Min': 'Fwd IAT Min',
-#     'Bwd Pkts/s': 'Bwd Packets/s',
-#     'Bwd Pkt Len Std': 'Bwd Packet Length Std',
-#     'Init Fwd Win Byts': 'Init_Win_bytes_forward',
-#     'Bwd IAT Min': 'Bwd IAT Min',
-#     'Init Bwd Win Byts': 'Init_Win_bytes_backward',
-#     'Idle Min': 'Idle Min',
-#     'TotLen Bwd Pkts': 'Total Length of Bwd Packets',
-#     'Flow Duration': 'Flow Duration',
-#     'Flow IAT Min': 'Flow IAT Min',
-#     'Bwd Pkt Len Mean': 'Bwd Packet Length Mean',
-#     'Pkt Len Std': 'Packet Length Std',
-#     'Bwd Header Len': 'Bwd Header Length',
-#     'Flow IAT Max': 'Flow IAT Max',
-#     'Fwd Seg Size Min': 'min_seg_size_forward',
-#     'Flow IAT Mean': 'Flow IAT Mean',
-#     'Fwd Pkt Len Max': 'Fwd Packet Length Max',
-#     'Fwd IAT Mean': 'Fwd IAT Mean',
-#     'Flow Pkts/s': 'Flow Packets/s',
-#     'Fwd Header Len': 'Fwd Header Length'
-# })
+
 X = X.rename(columns={
     'TotLen Fwd Pkts' : 'totlen_fwd_pkts',
     'Pkt Len Mean' :'pkt_len_mean',
