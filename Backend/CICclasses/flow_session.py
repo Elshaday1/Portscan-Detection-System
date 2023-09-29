@@ -155,13 +155,13 @@ class FlowSession(DefaultSession):
                         )
                     )
 
-                if self.csv_line == 0:
-                    self.csv_writer.writerow(data.keys())
+                # if self.csv_line == 0:
+                #     self.csv_writer.writerow(data.keys())
 
-                self.csv_writer.writerow(data.values())
-                self.csv_line += 1
+                # self.csv_writer.writerow(data.values())
+                # self.csv_line += 1
 
-                del self.flows[k]
+                # del self.flows[k]
         if not self.url_model:
             print("Garbage Collection Finished. Flows = {}".format(len(self.flows)))
 
