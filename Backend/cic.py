@@ -3,6 +3,8 @@ from scapy.layers.inet import IP,TCP
 from cicflowmeter import *
 from cicflowmeter import Flow,FlowAnalysis
 
+from cicflowmeter import PacketDirection
+
 def process_packet(packet):
     # Extract relevant information from the packet
     src_ip = packet[IP].src
