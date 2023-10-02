@@ -23,7 +23,7 @@ os.remove('C:/Users/Hp/Desktop/CIC/packet.csv')
 #opens a new file
 open('C:/Users/Hp/Desktop/CIC/packet.csv', 'w').close()
 ##
-
+##
 X = data[['totlen_fwd_pkts','pkt_len_mean', 'flow_byts_s', 'ack_flag_cnt', 'pkt_len_min', 'dst_port', 'fwd_iat_min', 'bwd_pkts_s', 'bwd_pkt_len_std',
            'init_fwd_win_byts', 'bwd_iat_min', 'init_bwd_win_byts', 'idle_min', 'totlen_bwd_pkts', 'flow_duration', 'flow_iat_min',
              'bwd_pkt_len_mean', 'pkt_len_std', 'bwd_header_len', 'flow_iat_max', 'fwd_seg_size_min', 'flow_iat_mean', 'fwd_pkt_len_max',
