@@ -62,4 +62,3 @@ X = X.rename(columns={
 predictions = loaded_model.predict(X)
 
 print("Predictions: ", predictions)
-l
