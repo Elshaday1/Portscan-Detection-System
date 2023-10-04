@@ -56,7 +56,6 @@ import joblib
 import threading
 import os
 
-##
 
 def follow(thefile):
     thefile.seek(0, 2)
