@@ -8,7 +8,6 @@ from csv_flow_loader import CSVFlowLoader
 from subprocess import Popen
 import subprocess
 ##
-
 def follow(thefile):
     thefile.seek(0, 2)
     while True:
